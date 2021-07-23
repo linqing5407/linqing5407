@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" xmlns:intf="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="urn:client.fcinterfacefacade" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4.1-SNAPSHOT
+Built on Jun 15, 2017 (10:55:06 UTC)-->
+ <wsdl:types>
+  <schema targetNamespace="urn:client.fcinterfacefacade" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="WSInvokeException">
+    <sequence/>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="synFCInvoiceRequest">
+
+      <wsdl:part name="jsonData" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="synFCInvoiceResponse">
+
+      <wsdl:part name="synFCInvoiceReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAttachmentInfoResponse">
+
+      <wsdl:part name="getAttachmentInfoReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="syncFaChangeRequest">
+
+      <wsdl:part name="jsonData" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="WSInvokeException">
+
+      <wsdl:part name="fault" type="tns1:WSInvokeException">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="syncFaClearResponse">
+
+      <wsdl:part name="syncFaClearReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="synFaCurCardResponse">
+
+      <wsdl:part name="synFaCurCardReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="refundResponse">
+
+      <wsdl:part name="refundReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="synOAReceivingBillRequest">
+
+      <wsdl:part name="jsonData" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="syncFaClearRequest">
+
+      <wsdl:part name="jsonData" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="synPaymentBillRequest">
+
+      <wsdl:part name="jsonData" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="synPaymentBillResponse">
+
+      <wsdl:part name="synPaymentBillReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="synOAReceivingBillResponse">
+
+      <wsdl:part name="synOAReceivingBillReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBaseDataResponse">
+
+      <wsdl:part name="getBaseDataReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="queryBEBankRequest">
+
+      <wsdl:part name="jsonData" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="queryBEBankResponse">
+
+      <wsdl:part name="queryBEBankReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getBaseDataRequest">
+
+      <wsdl:part name="jsonData" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="refundRequest">
+
+      <wsdl:part name="jsonData" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="faClearBillResponse">
+
+      <wsdl:part name="faClearBillReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAttachmentInfoRequest">
+
+      <wsdl:part name="jsonData" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="syncFaChangeResponse">
+
+      <wsdl:part name="syncFaChangeReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="faClearBillRequest">
+
+      <wsdl:part name="params" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="faChangeBillRequest">
+
+      <wsdl:part name="params" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="faChangeBillResponse">
+
+      <wsdl:part name="faChangeBillReturn" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="synFaCurCardRequest">
+
+      <wsdl:part name="jsonData" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WSFcInterfaceFacadeSrvProxy">
+
+      <wsdl:operation name="faChangeBill" parameterOrder="params">
+
+         <wsdl:input message="impl:faChangeBillRequest" name="faChangeBillRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:faChangeBillResponse" name="faChangeBillResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="faClearBill" parameterOrder="params">
+
+         <wsdl:input message="impl:faClearBillRequest" name="faClearBillRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:faClearBillResponse" name="faClearBillResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="synFaCurCard" parameterOrder="jsonData">
+
+         <wsdl:input message="impl:synFaCurCardRequest" name="synFaCurCardRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:synFaCurCardResponse" name="synFaCurCardResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="synPaymentBill" parameterOrder="jsonData">
+
+         <wsdl:input message="impl:synPaymentBillRequest" name="synPaymentBillRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:synPaymentBillResponse" name="synPaymentBillResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="syncFaChange" parameterOrder="jsonData">
+
+         <wsdl:input message="impl:syncFaChangeRequest" name="syncFaChangeRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:syncFaChangeResponse" name="syncFaChangeResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="syncFaClear" parameterOrder="jsonData">
+
+         <wsdl:input message="impl:syncFaClearRequest" name="syncFaClearRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:syncFaClearResponse" name="syncFaClearResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="synFCInvoice" parameterOrder="jsonData">
+
+         <wsdl:input message="impl:synFCInvoiceRequest" name="synFCInvoiceRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:synFCInvoiceResponse" name="synFCInvoiceResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="refund" parameterOrder="jsonData">
+
+         <wsdl:input message="impl:refundRequest" name="refundRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:refundResponse" name="refundResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="synOAReceivingBill" parameterOrder="jsonData">
+
+         <wsdl:input message="impl:synOAReceivingBillRequest" name="synOAReceivingBillRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:synOAReceivingBillResponse" name="synOAReceivingBillResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="queryBEBank" parameterOrder="jsonData">
+
+         <wsdl:input message="impl:queryBEBankRequest" name="queryBEBankRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:queryBEBankResponse" name="queryBEBankResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAttachmentInfo" parameterOrder="jsonData">
+
+         <wsdl:input message="impl:getAttachmentInfoRequest" name="getAttachmentInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAttachmentInfoResponse" name="getAttachmentInfoResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBaseData" parameterOrder="jsonData">
+
+         <wsdl:input message="impl:getBaseDataRequest" name="getBaseDataRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getBaseDataResponse" name="getBaseDataResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:WSInvokeException" name="WSInvokeException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WSFcInterfaceFacadeSoapBinding" type="impl:WSFcInterfaceFacadeSrvProxy">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="faChangeBill">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="faChangeBillRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="faChangeBillResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="faClearBill">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="faClearBillRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="faClearBillResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="synFaCurCard">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="synFaCurCardRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="synFaCurCardResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="synPaymentBill">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="synPaymentBillRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="synPaymentBillResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="syncFaChange">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="syncFaChangeRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="syncFaChangeResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="syncFaClear">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="syncFaClearRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="syncFaClearResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="synFCInvoice">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="synFCInvoiceRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="synFCInvoiceResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="refund">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="refundRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="refundResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="synOAReceivingBill">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="synOAReceivingBillRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="synOAReceivingBillResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="queryBEBank">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="queryBEBankRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="queryBEBankResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAttachmentInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAttachmentInfoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAttachmentInfoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getBaseData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getBaseDataRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservice.app.fi.eas.kingdee.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getBaseDataResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="WSInvokeException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="WSInvokeException" namespace="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WSFcInterfaceFacadeSrvProxyService">
+
+      <wsdl:port binding="impl:WSFcInterfaceFacadeSoapBinding" name="WSFcInterfaceFacade">
+
+         <wsdlsoap:address location="http://10.204.24.10:6890/ormrpc/services/WSFcInterfaceFacade"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
