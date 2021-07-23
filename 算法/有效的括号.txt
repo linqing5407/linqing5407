@@ -1,0 +1,60 @@
+
+给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
+
+有效字符串需满足：
+
+栈的思想
+ 
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/valid-parentheses
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+// ()(){}
+// {()}
+class Solution {
+    public boolean isValid(String s) {
+	 // 构建符号对应规则 判断符号是否右开 右开的入栈
+        Map<Character,Character> example = new HashMap<Character,Character>();
+        example.put('}','{');
+        example.put(']','[');
+        example.put(')','(');
+
+        int len = msg.length();
+        if (len < 2){
+            return false;
+        }
+        if((len % 2) > 0){
+            return false;
+        }
+        // 构建栈 双端队列  "{[]}"  (){}[]
+        Deque<Character> stack =new LinkedList();
+        for (int i =0 ;i < len; i++){
+
+            if(example.containsKey(msg.charAt(i))){
+                // 栈是空的说明没有与之对应的符号
+                if(!stack.isEmpty()){
+                    // 当前队列与第一个出栈的 去反是否相等
+                   if(example.get(msg.charAt(i)).equals(stack.peek())){
+                       // 栈中弹出该元素
+                       stack.pop();
+                   }else{
+                       // 不匹配返回结果
+                       return false;
+                   }
+                }else{
+                    // 栈中空了 ][ 这种情况 
+                    return false;
+
+                }
+            } else{
+                // 入栈
+                stack.push(msg.charAt(i));
+            }
+
+        }
+        // 遍历完成了栈中缺任然有
+        if(!stack.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+}

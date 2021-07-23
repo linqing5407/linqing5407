@@ -1,0 +1,158 @@
+152. 乘积最大子数组
+给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。
+
+ 
+
+示例 1:
+
+输入: [2,3,-2,4]
+输出: 6
+解释: 子数组 [2,3] 有最大乘积 6。
+示例 2:
+
+输入: [-2,0,-1]
+输出: 0
+解释: 结果不能为 2, 因为 [-2,-1] 不是子数组。
+
+
+
+
+/**
+ * 乘积最大子数组
+ * 拿一个变量存储最大值
+ * 暴力破解所有子数组情况取最大值 
+ * 出现0直接剪枝
+ *
+ */
+public int maxProduct(int[] nums){
+
+	int maxNUm = Integer.MIN_VALUE;
+	int len = nums.length;
+	if(len == 0){
+		return 0;
+	}
+	if(len == 1){
+		return nums[0];
+	}
+	for(int i = 0; i < len; i++){
+		maxNUm = Math.max(maxNUm, nums[i]);
+		int currentNum = nums[i];
+		for(int j = i + 1; j < len; j++){
+			currentNum = currentNum * nums[j];
+			maxNUm = Math.max(maxNUm, currentNum);
+			// 等于0往后乘已经没有意义了剪枝
+			if(currentNum == 0){
+			 continue;
+			}
+		}
+	}
+	return maxNUm;
+	
+}
+
+
+
+/**
+ * 通过三个变量就来
+ * max 最大值
+ * currentMax 当前计算后的最大值
+ * currentMin 当前计算后的最小值
+ *
+ * 动态规划 计算每个位置 计算后的最大值与最小值   
+ * 当碰到负数的时候当前位置的最大值变最小值 最小值变最大值
+ * @param nums 传入的数组
+ * @return 返回乘积的最大值
+ *
+ */
+ public int maxProduct(int[] nums){
+	int len = nums.length;
+	if(len == 0){
+		return 0;
+	}
+	if(len == 1){
+		return nums[0];
+	}
+	// 记录出现的最大值
+	int max = Integer.MIN_VALUE;
+	// 记录当前计算的最大值 默认为1
+	int currentMax = 1;
+	// 记录当前计算的最小值 默认为1
+	int currentMin = 1;
+	for(int i = 0; i < len; i++){
+		if(nums[i] < 0){
+			// 如果为负数 则最大值变最小值  最小值变最大值  相乘后
+			int temp = currentMax;
+			currentMax = currentMin;
+			currentMin = temp;
+		}
+		currentMax = Math.max(currentMax * nums[i], nums[i]);
+		currentMin = Math.min(currentMin * nums[i], nums[i]);
+		// 记录中间出现过的最大值
+		max = Math.max(currentMax, max);
+	}
+	return max;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+解题思路
+标签：动态规划
+遍历数组时计算当前最大值，不断更新
+令imax为当前最大值，则当前最大值为 imax = max(imax * nums[i], nums[i])
+由于存在负数，那么会导致最大的变最小的，最小的变最大的。因此还需要维护当前最小值imin，imin = min(imin * nums[i], nums[i])
+当负数出现时则imax与imin进行交换再进行下一步计算
+时间复杂度：O(n)O(n)
+代码
+
+class Solution {
+    public int maxProduct(int[] nums) {
+        int max = Integer.MIN_VALUE, imax = 1, imin = 1;
+        for(int i=0; i<nums.length; i++){
+            if(nums[i] < 0){ 
+              int tmp = imax;
+              imax = imin;
+              imin = tmp;
+            }
+            imax = Math.max(imax*nums[i], nums[i]);
+            imin = Math.min(imin*nums[i], nums[i]);
+            
+            max = Math.max(max, imax);
+        }
+        return max;
+    }
+}
+
+作者：guanpengchn
+链接：https://leetcode-cn.com/problems/maximum-product-subarray/solution/hua-jie-suan-fa-152-cheng-ji-zui-da-zi-xu-lie-by-g/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+
+
+
+
+
+
+

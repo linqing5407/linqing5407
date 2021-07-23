@@ -1,0 +1,52 @@
+数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
+
+ 
+
+示例 1：
+
+输入：n = 3
+输出：["((()))","(()())","(())()","()(())","()()()"]
+示例 2：
+
+输入：n = 1
+输出：["()"]
+
+
+/**
+ *   (())
+ *  深度优算法dfs获取所有可能结果
+ *  减枝 open 大于n  close >open 
+ * @param n 生成括号的对数
+ */
+public List<String> productStrByNums(int n){
+
+	List<String> resList = new ArrayList<>;
+	// 判断边界条件
+	if(n < 1){
+		return resList;
+	}
+	
+	dfs(resList, n, "", 0, 0);
+	
+}
+/**
+*
+*
+*
+*/
+private void dfs(List<String> resList, n, pathStr, int open, int close){
+
+	//  减枝 open 大于n  close >open 
+	if(open > n || close > open){
+		return;
+	}
+	
+	// 跳出的边界条件
+	if (pathStr.length() == 2n){
+		resList.add(pathStr);
+		return ;
+	}
+	
+	dfs(resList, n, pathStr  + '(', open + 1, close);
+	dfs(resList, n, pathStr  + ')', open, close + 1);
+}

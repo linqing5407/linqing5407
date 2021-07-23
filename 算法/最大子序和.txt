@@ -1,0 +1,101 @@
+//获取最长子串和	
+nums = [-2,1,-3,4,-1,2,1,-5,4]
+	
+	
+/**
+*
+* 两层for循环暴力破解
+*
+*
+*/
+public static int maxSubArray(int[] nums) {
+        if(nums.length == 0){
+            return 0;
+        }
+        int max = nums[0];
+        for(int i = 0; i < nums.length ; i++){
+            int current = nums[i];
+            if(current > max){
+                max =current;
+            }
+            for( int j = i+1; j< nums.length ;j++){
+                current = current + nums[j];
+                if(current > max){
+                    max =current;
+                }
+            }
+        }
+
+        return max;
+}
+	
+
+/**
+*
+* 贪心算法
+* 判断当前位置， 之前的串和是否小0 
+* 小于0丢弃前面的 从后面开始相加
+* 大于0继续往后相加
+* 中间记录出现过的最大和
+* @params nums 数组串	
+* @return 返回最大和
+*/
+public static int maxSubArray(int[] nums) {
+		
+		if (nums.length == 0){
+			return 0;
+		}
+		int prenums = 0;
+		int max = nums[0];
+		for (int i = 0; i < nums.length; i++) {
+			// 判断每个位置是否大于最大值
+			if(max < nums[i]){
+				max = nums[i];
+			}
+			prenums = prenums + nums[i];
+			// 判断自序是否最大
+			if(prenums > max){
+				max = prenums;
+			}
+			
+			// 如果到当前序列和小于0  则归零从后续开始相加
+			if(prenums < 0){
+				prenums = 0;
+			}
+
+		}
+	   return max;
+}	
+	
+/**
+* 动态规划
+* 1、计算每个位置当前的最大值，之前的和相加是否大于当前值（得过滤掉小于0的） 	
+* 2、遍历数字取出最大的和
+*
+* @params nums 数组串	
+* @return 返回最大和
+*/	
+public static int maxSubArray(int[] nums){
+
+	if (nums.length == 0){
+		return 0;
+	} 
+	if (nums.length == 1){
+		return nums[0];
+	} 
+	for (int i = 1; i < nums.length; i++) {
+		
+		if(nums[i] < nums[i-1] + nums[i]){
+			nums[i] = nums[i-1] + nums[i];
+		}
+	}
+	//找出当前数组中的最大值
+	int max = nums[0];
+	for(int i = 1; i < nums.length; i++){
+	
+		if(nums[i] > max){
+			max = nums[i];
+		}
+	}
+	return max;
+}

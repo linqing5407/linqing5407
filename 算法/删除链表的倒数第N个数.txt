@@ -1,0 +1,58 @@
+/**
+ * 删除链表的倒数第N个指针
+ * 左右双指针方式     1  2  3  4  5    
+ * 左右双指针方式     1     3                   
+ * 
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+		ListNode firstNode = head;
+		ListNode secondNode = head;
+		// 第一个指针先向前走N步 ，然后两个指针一起走，  
+		// 第一个指针到结尾的时候第二个指针正好到倒数N的前一位
+		for (int i = 0; i < n; i++){
+		    // 第一个节点没有前驱节点
+			if(firstNode.next == null){
+				return head.next;
+			}
+			firstNode = firstNode.next;
+		}
+		
+		while (firstNode.next != null){
+			firstNode = firstNode.next;
+			secondNode = secondNode.next;
+		}
+		
+		secondNode.next = secondNode.next.next;
+    }
+}
+
+
+
+// 删除链表的第N个指针
+class Solution {
+    // 0 1  2  3  4  5    
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+		// 头部插入一个节点，不用考虑第一个节点没有前驱节点的情况
+		ListNode newNode = new ListNode(0, head);
+		ListNode currentNode = newNode;
+		for (int i = 1; i< n ; i++){
+		   
+			currentNode = currentNode.next;
+			 // 防止越界
+			if (currentNode.next == null){
+				return head;
+			}
+		}
+		currentNode.next = currentNode.next.next;
+		return newNode.next;
+    }
+}

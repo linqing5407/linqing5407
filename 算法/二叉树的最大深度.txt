@@ -1,0 +1,111 @@
+给定一个二叉树，找出其最大深度。
+
+二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
+
+说明: 叶子节点是指没有子节点的节点。
+
+示例：
+给定二叉树 [3,9,20,null,null,15,7]，
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public int maxDepth(TreeNode root) {
+		int max = 0;
+		// 判断非空
+		if(root == null){
+			return 0;
+		}
+		// 队列先进先出
+		Queue<TreeNode> queueList = new LinkedList<>();
+		queueList.offer(root);
+		// 直到所有的层级遍历好
+		while (queueList.size() > 0) {
+			// 记录层级
+			max ++;
+			int size = queueList.size();
+			for (int i = 0; i < size; i++){
+				// 上一层的全部出队
+				TreeNode currentNode = queueList.poll();
+				// 记录下一层下一层的入队
+				if(currentNode.left != null){
+					queueList.offer(currentNode.left);
+				}
+				if(currentNode.right != null){
+					queueList.offer(currentNode.right);
+				}
+			}
+			
+		}
+		
+		return max;
+    }
+}
+    1
+   / \
+  2  3
+    /  \
+   5    6
+class Solution {
+		public int maxDepth(TreeNode root) {
+			int max = 0;
+			// 判断非空
+			if(root == null){
+				return max;
+			}
+			
+	}
+
+}
+
+// 深度优先算法
+public int maxDepth(TreeNode root){
+		
+		if(root == null){
+			return 0;
+		}
+		int leftDept = maxDepth(root.left); 
+		int rightDept = maxDepth(root.right); 
+		
+		return Math.max(leftDept, rightDept) + 1;
+}
+
+// 队列先进先出
+Queue<TreeNode> Queues = new LinkedList<>();
+offer
+poll
+peek
+// 栈 先进后出
+Deque<TreeNode> deque = new LinkedList<>();
+push
+pop
+peek
+ 
+
+
+
+
+
+
+
+
+
+

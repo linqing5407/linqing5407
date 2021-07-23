@@ -1,0 +1,825 @@
+class Solution{
+
+	public int[] twoSum(int[] nums, int target){
+			
+			for(int i = 0; i < nums.length; i++){
+				//
+				for(int j = i + 1; j<nums.length ;j++ ){
+					//两两比较获取相等结果 后直接return；
+					if(nums[i] + nums[j] == target){
+					
+						int[] result = new int[2];
+						result[0] = i;
+						result[1] = j;
+						return result;
+					}
+				
+				}
+			
+			}
+			
+	}
+
+
+
+}
+
+两数之和等于目标值
+class Solution{
+
+	public int[] twoSum(int[] nums, int target){
+	
+		int length = nums.length;
+		Map<Integer,Integer> hashTable =new HashMap<Integer,Integer>(length-1);
+		hashTable.put(nums[0],0);
+		for(int i = 1;i < length; i++ ){
+		
+			if(hashTable.containsKey(target - nums[i])){
+			
+				return new int[]{hashTable.get(target - nums[i]),i};
+			}
+		
+			hashTable.put(nums[i],i);
+		}
+		
+		return new int[0];
+	
+	}
+
+}
+
+
+ //对应位置相加 两数相加
+  //想加的时候可能大于10 记得进一
+  //运算的结果记录到 单向链表
+    
+
+    public ListNode addTwoNum(ListNode p1, ListNode p2){
+
+        int skipt = 0 ;
+        //单向链表存储结果集
+        ListNode resultNode = new ListNode(0);
+        //记录当前节点  将计算的节点放入当前
+        ListNode currentNode  = resultNode;
+        while(p1 != null || p2 !=null || skipt >0){
+            //不为空 获取当前节点值
+            int p1Val = p1 != null ? p1.val : 0;
+            int p2Val = p2 != null ? p2.val : 0;
+            //当前相加的值
+            int currentVal = p1Val + p2Val + skipt;
+            // 相除取整 获取进位
+            skipt = currentVal / 10;
+            p1 = p1.next;
+            p2 = p2.next;
+            //拼接到当前节点的下一个节点  取余获取相加后的个位
+            currentNode.next = new ListNode(currentVal % 10);
+            //记录下一个节点 ， 下次是拼接到当前节点的下下个节点  最终返回的是结果集的next
+            currentNode = currentNode.next;
+
+        }
+
+        return resultNode.next;
+
+    }
+
+
+//用滑动窗口的方式解决  最长不重复的字符串
+public int getMaxDifferent(String s){
+//记录当前左边起始位置
+int left = 0;
+//记录当前为止最长的字符串	
+	int max = 0;	
+	int len = s.length();
+	HashMap<Character , Integer> currentChas = new HashMap<Character , Integer>(len);
+	
+	for (int i = 0; i<len ; i ++) {
+		//判断是否存在相同的 字符
+		if(currentChas.containsKey(s.charAt(i))){
+			//字符相同，记录当前字符的位置 获取之前出现该字符的位置 ，
+			// 如果是左边前面出现过的 那么起始位置还是当前左边的位置， 将前面的出现过的移动到当前
+			left = Math.max(left , currentChas.get(s.charAt(i)) +1);
+		
+		}
+		//i - left + 1  获取每次字符串的长度 与之前的对比取最大值
+		max = Math.max(max , i - left + 1)
+		
+		
+		
+		currentChas.put(s.charAt[i] , i);
+	
+	}
+
+	return max;
+}
+
+	
+	
+	
+	
+	
+	
+	
+	
+
+//abacda
+
+class Solution 
+
+	publi int getDiffLength(String s){
+	
+		int left = 0;
+		int max = 0;
+		HashMap<Chractar , int> curentSet = new HashMap<Chractar , int>();
+		int length =x.length();
+		for(int i = 0; i < length; i++){
+		
+			if(curentSet.containsKey(x.Chaat[i])){
+				
+				left = Math.max(left , curentSet.get(x.charAt[i])+1)
+				
+			}
+			max = Math.max(max,i-left+1);
+			curentSet.put(s.charAt[i] , i);
+		
+		}
+		
+		
+	   return max;
+	
+	}
+
+	
+
+输入：s = "babad"
+输出："bab"
+解释："aba" 同样是符合题意的答案。
+
+/**
+*
+* 回文子串
+* @params s 传入的字符串
+* @return 输出的回文子串
+*/
+public String getLongestStr(String s) {
+
+	if(s.length() < 2 ) {
+		return "";
+	}
+	//长度大于 1
+	int maxlen = 1;
+	// 起始位置
+	int left = 0;
+	int len = s.length();
+	char[] str = s.charArray();
+	for(int i = 0; i < len - 1; i++) {
+	
+		for(int j = i + 1; j < len; j++ ) {
+		
+			if(j - i + 1 > maxlen && checkIsPalin(str , i , j)){
+			
+				maxlen  = j - 1 + 1;
+				left = i ;
+				
+			}
+		
+			
+		}
+		
+	
+	}
+	
+	return s.subString(left , left + maxlen);
+	
+
+}
+
+/**
+*
+*判断是否回文串
+*/	
+public Boolean checkIsPalin(char[] ,int left ,int right) {
+
+	while(left < right){
+		if(char[left] != char[right]) {
+			return false;
+		}
+		left++;
+		right--;
+	}
+	return true;
+}
+	
+	
+/**
+ *
+ * 冒泡排序
+ * @params 传入数组
+ */
+public static void main(String[] args) {
+	int[] arrs = {10, 2, 8, 3, 9, 7, 6};
+	int len = arrs.length;
+	int temp ;
+	for (int i = 0; i < len; i++) {
+		for (int j = 0; j < len-1-i; j++) {
+			if(arrs[j] < arrs[j + 1]){
+				// 交换两个数
+				temp = arrs[j];
+				arrs[j] = arrs[j + 1];
+				arrs[j + 1] = temp;
+			}
+		}
+	}
+	System.out.println(Arrays.toString(arrs));
+}
+	
+	
+/**
+*
+* 快速排序算法 {6,9,3,4,2,1,7,5}
+*
+* 找一个作为比较的基准值任取 , 我们这边取第一个
+* 进行分区 将第一个值放中间 左边放小于他的数，右边放大于他的数 区分开来
+* 继续分别对左右两边的数组重复上述操作，直到遍历完成排序结束
+* @params arrys 入参待排序数组
+* @params low 低位
+* @params hight 高位
+* @return arrys 排序后的结果
+*/	
+public void quickSort (int[] array, int low, int hight) {
+
+	if(array.length == 0){
+		return;
+	}
+	//递归跳出位置
+	if(hight >= low){
+		return;
+	}
+	int pos = low;
+	// 根据起始值分区 左边小于自己右边大于自己
+	pos = partition(array, low, hight);
+	// 左边的继续递归区分
+    quickSort(array, low, pos - 1);
+	// 右边的继续递归区分
+	quickSort(array, pos + 1, hight);
+
+}
+/**
+*
+*
+* @params arrys 入参待排序数组
+* @params low 低位
+* @params hight 高位
+*
+*/
+public int partition (int[] array, int low, int hight) {
+	
+	// 取第一位作为空位 占坑
+	int posVal = array[low];
+	
+	while(hight > low){
+		// 从高位开始遍历 ，发现大于自己的继续遍历， 直到小于自己的退出 将该值赋给低位 这时高位留空
+		while(hight > low && array[hight] >= posVal) {
+			hight--;
+		}
+		// 这时高为变为空位 要从低位开始遍历
+		if(hight > low){
+			array[low] = array[hight];
+			low++;
+		}
+		// 从低位开始遍历 发现小于自己的继续遍历， 大于自己的与之前留空的高位交换 ，低位留空
+		while(hight >low && array[low] <= posVal){
+			low++;
+		}
+		//  大于自己的与之前留空的高位交换 ，低位留空
+		if(hight > low){
+			array[hight] = array[low];
+			hight--;
+		}
+	}
+	//补上之前寄存的位置
+	array[hight] = posVal;
+	return hight;
+}	
+	
+	
+//获取最长子串和	
+nums = [-2,1,-3,4,-1,2,1,-5,4]
+	
+	
+/**
+*
+* 两层for循环暴力破解
+*
+*
+*/
+public static int maxSubArray(int[] nums) {
+        if(nums.length == 0){
+            return 0;
+        }
+        int max = nums[0];
+        for(int i = 0; i < nums.length ; i++){
+            int current = nums[i];
+            if(current > max){
+                max =current;
+            }
+            for( int j = i+1; j< nums.length ;j++){
+                current = current + nums[j];
+                if(current > max){
+                    max =current;
+                }
+            }
+        }
+
+        return max;
+}
+	
+
+/**
+*
+* 贪心算法
+* 判断当前位置， 之前的串和是否小0 
+* 小于0丢弃前面的 从后面开始相加
+* 大于0继续往后相加
+* 中间记录出现过的最大和
+* @params nums 数组串	
+* @return 返回最大和
+*/
+public static int maxSubArray(int[] nums) {
+		
+		if (nums.length == 0){
+			return 0;
+		}
+		int prenums = 0;
+		int max = nums[0];
+		for (int i = 0; i < nums.length; i++) {
+			// 判断每个位置是否大于最大值
+			if(max < nums[i]){
+				max = nums[i];
+			}
+			prenums = prenums + nums[i];
+			// 判断自序是否最大
+			if(prenums > max){
+				max = prenums;
+			}
+			
+			// 如果到当前序列和小于0  则归零从后续开始相加
+			if(prenums < 0){
+				prenums = 0;
+			}
+
+		}
+	   return max;
+}	
+	
+/**
+* 动态规划
+* 1、计算每个位置当前的最大值，之前的和相加是否大于当前值（得过滤掉小于0的） 	
+* 2、遍历数字取出最大的和
+*
+* @params nums 数组串	
+* @return 返回最大和
+*/	
+public static int maxSubArray(int[] nums){
+
+	if (nums.length == 0){
+		return 0;
+	} 
+	if (nums.length == 1){
+		return nums[0];
+	} 
+	for (int i = 1; i < nums.length; i++) {
+		
+		if(nums[i] < nums[i-1] + nums[i]){
+			nums[i] = nums[i-1] + nums[i];
+		}
+	}
+	//找出当前数组中的最大值
+	int max = nums[0];
+	for(int i = 1; i < nums.length; i++){
+	
+		if(nums[i] > max){
+			max = nums[i];
+		}
+	}
+	return max;
+}
+
+[1,8,6,2,5,4,8,3,7]	
+/**
+*
+* 双指针
+* 计算当前的面积
+* 长边的保留 短边的往中间缩 直到找到最大的
+* @params height 非负整数数组
+* @return maxAreas 最大面积
+*/	
+public int maxArea(int[] height) {
+	
+	if(height.length == 0){
+		return 0;
+	}
+	// 左指针
+	int left = 0;
+	// 右指针
+	int right = height.length - 1;
+	// 当前最大面积
+	int maxAreas = 0;
+	
+	while(left < right){
+		// 计算当前的面积
+		int areas = Math.min(height[left] , height[right]) * (right - left);
+		if(maxAreas < areas){
+			maxAreas = areas;
+		}
+		//长边的保留 短边的往中间缩 直到找到最大的
+		if(height[left] > height[right]){
+			right--;
+		} else {
+			left+=;
+		}
+	}
+	return maxAreas;
+	
+}	
+	
+	
+/**
+*
+* 双指针
+* 计算当前的面积
+* 长边的保留 短边的往中间缩 直到找到最大的
+* @params height 非负整数数组
+* @return maxAreas 最大面积
+*/	
+public int maxArea(int[] height) {
+	
+	if(height.length == 0){
+		return 0;
+	}
+	int left = 0;
+	int right = height.length - 1;
+	int maxArea = 0;
+	while(left < right){
+		int areas = Math.min(height[left] , height[right]) * (right - left);
+		if(maxArea < areas){
+			maxArea = areas;
+		}
+	}
+	
+	if(height[left] > height[right]){
+		right--;
+	}else{
+		left++;
+	}
+	return maxArea;
+}	
+
+
+
+
+给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
+
+注意：答案中不可以包含重复的三元组。
+
+ 
+
+示例 1：
+
+输入：nums = [-1,0,1,2,-1,-4]
+输出：[[-1,-1,2],[-1,0,1]]
+示例 2：
+
+输入：nums = []
+输出：[]
+示例 3：
+
+输入：nums = [0]
+输出：[]
+
+
+
+
+
+public List<List<Integer>> findZeroFromArray(int[] nums){
+
+	List<List<Integer>> result = new ArrayList<List<Integer>>();
+	int len = nums.length;
+	if(len < 3){
+		return result;
+	}
+	
+	for(int i = 0; i < len - 2; i++){
+		int first = nums[i];
+		for(int j = i +1; j < len - 1; j++){
+		int second = nums[j];
+			for (int k = j + 1; k < len ; k++) {
+				if(first + second + nums[k] == 0){
+				List<Integer> list =new ArrayList<Integer>();
+				list.add(first);
+				list.add(second);
+				list.add(nums[k]);
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	return result;
+
+}
+
+/**
+*
+* 三数之和
+* 排序可以去除重复的
+* 双指针找到等于直接的
+* @param nums 数组串
+* @return List<List<Integer>> 返回的数组
+*/
+public static List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        int len = nums.length;
+        // 长度小于上直接返回
+        if(len < 3) {
+            return result;
+        }
+        Arrays.sort(nums);
+        // 第一层循环获取目标值
+        for (int i = 0; i<len ; i++){
+
+            if (i > 0 && nums[i] == nums[i-1]){
+                continue;
+            }
+            // 后面的两数之和 等于总和减去首位 后面通过双指针找到所有复合条件的和为target
+            int target = 0 - nums[i];
+            // 获取左右指针
+            int right = len - 1;
+            int left = i + 1;
+            while (left < right){
+                // 如果相等记录数组
+                if(nums[left] + nums[right] == target){
+                    List<Integer> currentList = new ArrayList<Integer>();
+                    currentList.add(nums[i]);
+                    currentList.add(nums[left]);
+                    currentList.add(nums[right]);
+                    result.add(currentList);
+                    while (left < right && nums[right] == nums[right-1]){
+                        right--;
+                    }
+                    right--;
+                    continue;
+                }
+                // 如果大于目标说明值过大 右边指针左移取小点的值 过滤掉重复的
+                if (nums[left] + nums[right] > target){
+                    while (left < right && nums[right] == nums[right-1]){
+                        right--;
+                    }
+                    right--;
+                    continue;
+                }
+                // 如果小于目标值说明和太小 左指针右移获得大的数 过滤掉重复的
+                if (nums[left] + nums[right] < target){
+                    while (left < right && nums[left] == nums[left+1]){
+                        left++;
+                    }
+                    left++;
+                    continue;
+                }
+            }
+
+        }
+
+        return result;
+    }
+
+
+
+	
+给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。答案可以按 任意顺序 返回。
+
+给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。2 ,3 
+
+
+/**
+*
+*
+* 
+* 深度优先算法
+*
+*/
+public List<String> letterCombination(String digits){
+
+	List<String> allCombinnationList = new ArrayList<String>();
+	if(digits.length() == 0){
+		return allCombinnationList;
+	}
+	
+	Map<Character, String> phoneMap = new HashMap<Character, String>();
+	phoneMap.put('2',"abc");
+	phoneMap.put('3', "def");
+	phoneMap.put('4', "ghi");
+	phoneMap.put('5', "jkl");
+	phoneMap.put('6', "mno");
+	phoneMap.put('7', "pqrs");
+	phoneMap.put('8', "tuv");
+	phoneMap.put('9', "wxyz");
+	
+	
+}
+方法一：回溯
+首先使用哈希表存储每个数字对应的所有可能的字母，然后进行回溯操作。
+
+回溯过程中维护一个字符串，表示已有的字母排列（如果未遍历完电话号码的所有数字，则已有的字母排列是不完整的）。该字符串初始为空。
+每次取电话号码的一位数字，从哈希表中获得该数字对应的所有可能的字母，并将其中的一个字母插入到已有的字母排列后面，然后继续处理电话号码的后一位数字，
+直到处理完电话号码中的所有数字，即得到一个完整的字母排列。然后进行回退操作，遍历其余的字母排列。
+
+回溯算法用于寻找所有的可行解，如果发现一个解不可行，则会舍弃不可行的解。在这道题中，由于每个数字对应的每个字母都可能进入字母组合，因此不存在不可行的解，直接穷举所有的解即可。
+
+作者：LeetCode-Solution
+链接：https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/solution/dian-hua-hao-ma-de-zi-mu-zu-he-by-leetcode-solutio/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+/**
+*
+*
+* @param digits 传入的字符串("23");
+* @param index  当前遍历字符的下标 0 ("23");
+* @param phoneMap  电话号码对应关系
+* @param allCombinnationList  结果集
+* @param resultString  记录拼接的结果
+
+*/
+public void backtrack(List<String> allCombinnationList,Map<Character, String> phoneMap, int index, String digits , String resultString){
+	
+	// 字符串长度遍历完成
+	if(index == digits.length()){
+		allCombinnationList.add(resultString);
+	}else{
+	// 2
+	char source = digits.charAt(index);
+	// 得到 "abc"
+	String letter = phoneMap.get(source);
+	int letterCount = letter.length;
+	for(int i = 0; i < letterCount; i++){
+		resultString.append(letter.charAt(i));
+		backtrack(allCombinnationList, phoneMap, index+1, digits, resultString);
+		resultString.deleteCharAt(index);
+	}
+}
+	
+}
+
+public List<String> letterCombinnation(String digits){
+	List<String> allCombinnationList = new ArrayList();
+	Map<Character , String> phonenum = new HashMap<Character ,String>();
+	phoneMap.put('2',"abc");
+	phoneMap.put('3', "def");
+	phoneMap.put('4', "ghi");
+	phoneMap.put('5', "jkl");
+	phoneMap.put('6', "mno");
+	phoneMap.put('7', "pqrs");
+	phoneMap.put('8', "tuv");
+	phoneMap.put('9', "wxyz");
+	// 从第一位开始遍历数组
+	back( allCombinnationList,  phonenum,  0,  digits,  currentStr);
+}
+
+/**
+*
+*
+* 
+*/
+publi void back(List<String> allCombinnationList, Map<Character , String> phonenum, int index, String digits, String currentStr){
+
+	// 递归跳出条件
+	if (index == currentStr.length()){
+		allCombinnationList.add(currentStr);
+	} esle{
+		
+		char num = digits.charAt(index);
+		String letter = phonenum.get(num);
+		int letterCount = letter.length();
+		for (int i = 0; i < length; i++){
+			currentStr = currentStr + letter.charAt(i);
+			// 递归遍历后续的电话号码
+			back( allCombinnationList,  phonenum,  index + 1,  digits,  currentStr);
+			// 循环 def的时候  拼接完ad 移除d 拼接后面的e ae
+			currentStr.deleteCharAt(index);
+		}
+	}
+
+}
+
+/**
+ * 先获得链表的总长度 count
+ * 将倒序的N换成正序的 count -N
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+		// 记录链表的长度
+		int allCount = 1;
+		ListNode currentNodeAll = head;
+		while (currentNodeAll.next !=null){
+		    currentNodeAll = currentNodeAll.next;
+			allCount =allCount +1;
+		}
+		// 将倒序的N换成正序的 count -N
+		if ( allCount < n){
+		// 转换成正序的第3 转成正序弟3个   1 ,2, 3, 4, 5;
+             return head;
+		}
+        int nums = allCount - n + 1;
+		
+        // 当移除的是第一个节点的时候
+		if(nums == 1){
+            return head.next;
+        }
+		
+		// 当前层数
+		int currentCount = 1;
+        // 移除的是第二个及以后的节点的时候
+        ListNode currentNode = head;
+		for (int i = 2; i < nums; i++){
+             currentNode = currentNode.next;
+        }
+             currentNode.next = currentNode.next.next;
+		return head;
+    
+    }
+}
+
+
+/**
+ *
+ * 左右双指针方式     1  2  3  4  5    
+ * 左右双指针方式     1     3                   
+ * 
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+		ListNode first = head;
+		ListNode second = head;
+		// 第一个指针先走N步
+		for (int i =1 ; i < n ; i++){
+			if(first.next == null){
+				return head.next;
+			}
+			first = first.next;
+			
+		}
+		// 前后两个指针歩长一致 第一个指针到底了 第二个指针正好再前一位
+		while(first.next !=null){
+			first = first.next;
+			second = second.next;
+		}
+	
+		second.next = second.next.next;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+

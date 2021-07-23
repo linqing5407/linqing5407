@@ -1,0 +1,80 @@
+/**中序遍历
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+ 
+ 
+ 方法一：递归
+思路与算法
+
+首先我们需要了解什么是二叉树的中序遍历：按照访问左子树——根节点——右子树的方式遍历这棵树，而在访问左子树或者右子树的时候我们按照同样的方式遍历，
+直到遍历完整棵树。因此整个遍历过程天然具有递归的性质，我们可以直接用递归函数来模拟这一过程。
+
+定义 inorder(root) 表示当前遍历到 \textit{root}root 节点的答案，那么按照定义，我们只要递归调用 inorder(root.left) 
+来遍历 \textit{root}root 节点的左子树，然后将 \textit{root}root 节点的值加入答案，再递归调用inorder(root.right) 来遍历
+ \textit{root}root 节点的右子树即可，递归终止的条件为碰到空节点。
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+	
+			List<Integer> listResult =new ArrayList<>();
+	
+    }
+	
+	public void middle(TreeNode root, List<Integer> listResult){
+	
+		if(root == null){
+			return;
+		}
+		
+		middle(root.left, listResult);
+		listResult.add(root.val);
+		middle(root.right, listResult)
+		
+	}
+	
+	
+	
+	
+	
+	public dfs(int n, String path, List<String> result, int open, int close){
+	
+	
+		if(open > 2*n || close > open){
+			return;
+		}
+	
+		if(path.length() == 2*n){
+			result;
+		}
+		dfs(n, path +"(", open + 1, close);
+		dfs(n, patc + ")", open, close + 1 )
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
